@@ -24,7 +24,11 @@ jobs:
 
       - name: Fetch Latest Data
         run: |
-          curl -L -s "https://api.penxpencil.com/v3/return/pw-old-and-new-batches.php" -o batches.json
+          curl -L -s \
+          -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+          --connect-timeout 30 \
+          --max-time 60 \
+          "https://api.penxpencil.com/v3/return/pw-old-and-new-batches.php" -o batches.json
 
       - name: Shuffle Data Array
         run: |
